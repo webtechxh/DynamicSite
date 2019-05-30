@@ -9,7 +9,7 @@ module.exports = function(passport){
   opts.secretOrKey = config.secret;
   passport.use(new JwtStrategy(opts, verify));
   async function verify(jwt_payload, done) {
-    try{
+    try {
       user = await database.getUserByUsername(jwt_payload.username);
     } catch (e) {
       return done(e, false);

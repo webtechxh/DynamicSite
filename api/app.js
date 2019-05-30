@@ -30,6 +30,7 @@ require('./config/passport')(passport);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
+app.use('/authenticate', authenticateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
