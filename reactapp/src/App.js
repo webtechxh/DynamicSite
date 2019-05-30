@@ -16,6 +16,7 @@ import Registerteam from "./Registerteam"
 import Registertournament from "./Registertournament"
 import Tournamentresults from "./Tournamentresults"
 import Profile from "./Profile"
+import Tourney from "./Tourney"
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/registertournament/" component={Registertournament} />
         <Route path="/tournamentresults/" component={Tournamentresults} />
         <Route path="/profile/" component={Profile} />
+        <Route path="/tourney/" component={Tourney} />
         <Footer />
       </div>
     </Router>
