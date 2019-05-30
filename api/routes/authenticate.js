@@ -12,18 +12,22 @@ var cred=credential();
 router.post('/', async function(req, res, next) {
   var username = req.body.username;
   var pwd = req.body.password;
-  var userData = await database.getUserByUsername(username);
+  try{
+    var userData = await database.getUserByUsername(username);
+  } catch (e) {
+    return res.json({success: false, message: 'database access failed'});
+  }
   if (!userData){
     return res.json({success: false, message: 'User does not exist'});
   }
-  storedHash = userData.password;
 
-  cred.verify(userData, pwd, authUser);
+  var storedHash = userData.password;
+  cred.verify(storedHash, pwd, authUser);
   async function authUser(err, isValid){
     if (err) throw err;
     if (isValid){
-      const token = jwt.sign(userData, config.secret, {expiresIn: 604800});
-      authJson = {
+      const token = await jwt.sign(userData, config.secret, {expiresIn: 604800});
+      var authJson = {
         success: true,
         token: 'JWT ' + token,
         user: {
@@ -31,6 +35,7 @@ router.post('/', async function(req, res, next) {
           email: userData.email
         }
       };
+      
       res.json(authJson);
     }
     else {

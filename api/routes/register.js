@@ -23,6 +23,7 @@ router.post('/', function(req, res, next) {
         await database.createUser(username, hashedPassword, email);
         res.json({success: true, msg: 'User created successfully'});
       } catch (e) {
+        console.log(e);
         res.json({success: false, msg: 'Failed to create user'});
       }
      }

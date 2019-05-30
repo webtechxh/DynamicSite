@@ -1,6 +1,11 @@
 "use strict"
 var sqlite = require('sqlite');
 
+module.exports.createTeamSchema = createTeamSchema;
+module.exports.createUserSchema = createUserSchema;
+module.exports.createUser = createUser;
+module.exports.getUserByUsername = getUserByUsername;
+
 async function createTeamSchema(){
   try {
         var db = await sqlite.open("./db.sqlite");
@@ -27,17 +32,19 @@ async function createUserSchema(){
 async function createUser(username, password, email){
   try {
         var db = await sqlite.open("./db.sqlite");
-        var ps = db.prepare("INSERT INTO User Values(?, ?, ?)");
-        ps.run(username, password, email);
-        var as = await db.all("select * from User where username = " + username);
+        var as = await db.all("select * from User");
         console.log(as);
+        await db.run("INSERT INTO User(username, password, email) Values(?, ?, ?)", [username, password, email]);
+        //var ps = db.prepare("INSERT INTO User Values(?, ?, ?)");
+        //await ps.run(username, password, email);
+        //await ps.finalize();
       } catch (e) { throw e; }
 }
 
 async function getUserByUsername(username){
   try {
         var db = await sqlite.open("./db.sqlite");
-        var as = await db.get("select * from User where username = " + username)
+        var as = await db.get("select * from User where username = ?", [username]);
         return as;
         console.log(as);
       } catch (e) { throw e; }
