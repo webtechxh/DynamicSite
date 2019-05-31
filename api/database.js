@@ -4,7 +4,7 @@ var sqlite = require('sqlite');
 module.exports.createTeamSchema = createTeamSchema;
 module.exports.createUserSchema = createUserSchema;
 module.exports.createUser = createUser;
-module.exports.getUserByUsername = getUserByUsername;
+module.exports.getUserByEmail = getUserByEmail;
 
 async function createTeamSchema(){
   try {
@@ -23,29 +23,27 @@ async function createUserSchema(){
   try {
         var db = await sqlite.open("./db.sqlite");
         await db.run("DROP TABLE IF EXISTS User")
-        await db.run("CREATE TABLE User(username VARCHAR(20) PRIMARY KEY, password VARCHAR(20) NOT NULL, email VARCHAR(50) NOT NULL)");
+        await db.run("CREATE TABLE User(email VARCHAR(100) PRIMARY KEY, password VARCHAR(20) NOT NULL, name VARCHAR(100) NOT NULL)");
         var as = await db.all("select * from User");
         console.log(as);
       } catch (e) { console.log(e); }
 }
 
-async function createUser(username, password, email){
+async function createUser(email, password, name){
   try {
         var db = await sqlite.open("./db.sqlite");
-        var as = await db.all("select * from User");
-        console.log(as);
-        await db.run("INSERT INTO User(username, password, email) Values(?, ?, ?)", [username, password, email]);
+        await db.run("INSERT INTO User(email, password, name) Values(?, ?, ?)", [email, password, name]);
         //var ps = db.prepare("INSERT INTO User Values(?, ?, ?)");
         //await ps.run(username, password, email);
         //await ps.finalize();
       } catch (e) { throw e; }
 }
 
-async function getUserByUsername(username){
+async function getUserByEmail(email){
   try {
         var db = await sqlite.open("./db.sqlite");
-        var as = await db.get("select * from User where username = ?", [username]);
-        return as;
+        var as = await db.get("select * from User where email = ?", [email]);
         console.log(as);
+        return as;
       } catch (e) { throw e; }
 }

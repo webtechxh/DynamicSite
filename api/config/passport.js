@@ -10,7 +10,7 @@ module.exports = function(passport){
   passport.use(new JwtStrategy(opts, verify));
   async function verify(jwt_payload, done) {
     try {
-      user = await database.getUserByUsername(jwt_payload.username);
+      user = await database.getUserByEmail(jwt_payload.email);
     } catch (e) {
       return done(e, false);
     }

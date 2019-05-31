@@ -10,11 +10,12 @@ var cred=credential();
 
 /* POST register a new user. */
 router.post('/', async function(req, res, next) {
-  var username = req.body.username;
+  var email = req.body.email;
   var pwd = req.body.password;
   try{
-    var userData = await database.getUserByUsername(username);
+    var userData = await database.getUserByEmail(email);
   } catch (e) {
+    console.log(e);
     return res.json({success: false, message: 'database access failed'});
   }
   if (!userData){
@@ -26,16 +27,16 @@ router.post('/', async function(req, res, next) {
   async function authUser(err, isValid){
     if (err) throw err;
     if (isValid){
-      const token = await jwt.sign(userData, config.secret, {expiresIn: 604800});
+      const token = await jwt.sign({"email": userData.email}, config.secret, {expiresIn: 604800});
       var authJson = {
         success: true,
         token: 'JWT ' + token,
         user: {
-          username: userData.username,
-          email: userData.email
+          email: userData.email,
+          name: userData.name
         }
       };
-      
+
       res.json(authJson);
     }
     else {
