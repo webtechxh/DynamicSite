@@ -19,7 +19,8 @@ class Register extends React.Component {
     return (
       this.state.email.length > 0 &&
       this.state.password.length > 0 &&
-      this.state.password === this.state.confirmPassword
+      this.state.password === this.state.confirmPassword &&
+      this.isLoading == false
     );
   }
 
@@ -44,7 +45,7 @@ class Register extends React.Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            isLoading: false,
             regSuccess: result.success
           });
           console.log(result);
@@ -54,7 +55,7 @@ class Register extends React.Component {
         },
         (error) => {
           this.setState({
-            isLoaded: true,
+            isLoading: false,
             regSuccess: false
           });
         }
