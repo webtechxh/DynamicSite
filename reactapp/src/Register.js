@@ -20,7 +20,7 @@ class Register extends React.Component {
       this.state.email.length > 0 &&
       this.state.password.length > 0 &&
       this.state.password === this.state.confirmPassword &&
-      this.isLoading == false
+      this.isLoading === false
     );
   }
 
@@ -66,7 +66,7 @@ class Register extends React.Component {
   render()  {
     return (
       <div class="container">
-            <div class="row centered-form justify-content-center my-5">
+          <div class="row centered-form justify-content-center my-5">
             <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             	<div class="panel panel-default">
             		<div class="panel-heading">
