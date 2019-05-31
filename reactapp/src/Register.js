@@ -48,6 +48,9 @@ class Register extends React.Component {
             regSuccess: result.success
           });
           console.log(result);
+          if (this.regSuccess) {
+            this.props.history.push("/login");
+          }
         },
         (error) => {
           this.setState({
