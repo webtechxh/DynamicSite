@@ -47,7 +47,11 @@ class Login extends React.Component {
             isLoading: false,
             regSuccess: result.success
           });
-          console.log(result);
+          if (this.state.regSuccess) {
+            localStorage.setItem('authToken', result.token);
+            localStorage.setItem('authorized', true);
+            this.props.history.push("/");
+          }
         },
         (error) => {
           this.setState({
