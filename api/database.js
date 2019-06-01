@@ -3,6 +3,7 @@ var sqlite = require('sqlite');
 
 module.exports.createTeamSchema = createTeamSchema;
 module.exports.createUserSchema = createUserSchema;
+module.exports.createTournamentSchema = createTournamentSchema;
 module.exports.createUser = createUser;
 module.exports.getUserByEmail = getUserByEmail;
 
@@ -25,6 +26,20 @@ async function createUserSchema(){
         await db.run("DROP TABLE IF EXISTS User")
         await db.run("CREATE TABLE User(email VARCHAR(100) PRIMARY KEY, password VARCHAR(20) NOT NULL, name VARCHAR(100) NOT NULL)");
         var as = await db.all("select * from User");
+        console.log(as);
+      } catch (e) { console.log(e); }
+}
+
+async function createTournamentSchema(){
+  try {
+        var db = await sqlite.open("./db.sqlite");
+        await db.run("DROP TABLE IF EXISTS Tournament")
+        await db.run("CREATE TABLE Tournament(" + "\n" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," + "\n" +
+                        "userEmail VARCHAR(100) NOT NULL," + "\n" +
+                        "state VARCHAR(2500) NOT NULL," + "\n" +
+                        "FOREIGN KEY (userEmail) REFERENCES User(email))");
+        var as = await db.all("select * from Tournament");
         console.log(as);
       } catch (e) { console.log(e); }
 }
