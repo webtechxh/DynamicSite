@@ -23,7 +23,13 @@ function Header() {
                 <Link class="dropdown-item" to="/registertournament">Register Tournament</Link>
                 <Link class="dropdown-item" to="/registerteam">Register Team</Link>
                 <div class="dropdown-divider"></div>
-                <Link class="dropdown-item" to="/tournamentresults">Tournament Results</Link>
+
+                {/*
+                  <Link class="dropdown-item" to="/tournamentresults">Tournament Results</Link>
+                  <div class="dropdown-divider"></div>
+                */}
+
+                <Link class="dropdown-item" to="/tournify">Tournify</Link>
               </div>
             </li>
           </ul>

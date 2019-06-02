@@ -23,7 +23,7 @@ let Competitor = styled.button`
 const Main = styled.div`
   grid-template-columns: ${props => props.mainIndexOfColumn};
   grid-template-rows: ${props => props.mainIndexOfRow};
-  background-color: #edd1ee;
+  background-color: #86d8f7;
   display: grid;
   height: 100vh;
   text-align: center;

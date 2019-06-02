@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function Footer() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
@@ -13,16 +13,13 @@ function Footer() {
               </Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" to="/about">About</Link>
+              <Link class="nav-link " to="/about">About</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" to="/services">Services</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" to="/contact">Contact</Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/tourney">Tourney</Link>
             </li>
           </ul>
         </div>
