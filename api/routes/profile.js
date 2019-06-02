@@ -4,7 +4,7 @@ var passport = require('passport');
 
 /* GET home page. */
 router.get('/', passport.authenticate('jwt', {session:false}), function(req, res, next) {
-  res.json({ success: true, message: 'You are authorized!' });
+  res.json({ success: true, message: 'You are authorized!', user: req.user });
 });
 
 module.exports = router;

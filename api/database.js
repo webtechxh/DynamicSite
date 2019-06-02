@@ -38,6 +38,7 @@ async function createTournamentSchema(){
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," + "\n" +
                         "userEmail VARCHAR(100) NOT NULL," + "\n" +
                         "state VARCHAR(2500) NOT NULL," + "\n" +
+                        "title VARCHAR(100) NULL," + "\n" +
                         "FOREIGN KEY (userEmail) REFERENCES User(email))");
         var as = await db.all("select * from Tournament");
         console.log(as);
@@ -54,6 +55,16 @@ async function createUser(email, password, name){
       } catch (e) { throw e; }
 }
 
+async function createTournament(userEmail, state, title){
+  try {
+        var db = await sqlite.open("./db.sqlite");
+        await db.run("INSERT INTO Tournament(userEmail, state, title) Values(?, ?, ?)", [userEmail, state, title]);
+        //var ps = db.prepare("INSERT INTO User Values(?, ?, ?)");
+        //await ps.run(username, password, email);
+        //await ps.finalize();
+      } catch (e) { throw e; }
+}
+
 async function getUserByEmail(email){
   try {
         var db = await sqlite.open("./db.sqlite");
@@ -61,4 +72,13 @@ async function getUserByEmail(email){
         console.log(as);
         return as;
       } catch (e) { throw e; }
+}
+
+async function getTournamentStateById(id){
+  try{
+    var db = await sqlite.open("./db.sqlite");
+    var as = await db.get("select state from User where id = ?", [id]);
+    console.log(as);
+    return as;
+  } catch (e) { throw e; }
 }

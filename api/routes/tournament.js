@@ -7,4 +7,9 @@ router.post('/', passport.authenticate('jwt', {session:false}), function(req, re
   res.json({ success: true, message: 'You are authorized!' });
 });
 
+router.get('/:id', function(req, res, next) {
+  //var tState = getTournamentStateById(req.id);
+  res.json({success: true, tournamentId: req.params.id});
+});
+
 module.exports = router;
