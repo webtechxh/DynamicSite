@@ -8,15 +8,15 @@ function Footer() {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <Link class="nav-link" to="/"><b>Home</b>
+              <Link class="nav-link" style={{color:'#ffffff'}} to="/"><b>Home</b>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link " to="/about"><b>About</b></Link>
+              <Link class="nav-link " style={{color:'#ffffff'}} to="/about"><b>About</b></Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" to="/contact"><b>Contact</b></Link>
+              <Link class="nav-link" style={{color:'#ffffff'}}  to="/contact"><b>Contact</b></Link>
             </li>
           </ul>
         </div>

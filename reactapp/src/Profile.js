@@ -1,58 +1,28 @@
 import React from 'react';
 import { Link } from "react-router-dom"
+import Image from './teamphoto.png'; // Import using relative path
 
 function Tournamentresults() {
   return (
-
-
-    <div class="jumbotron text-center">
+    <div class="top-padding text-center">
       <h1>Bristol University Hopscotch Team</h1>
-
-
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-
-
-    <div class="container">
+    <div class="top-padding container">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="top-padding col-sm-4">
           <h2>About Us</h2>
-          <h5>Photo of me:</h5>
           <Link class="thumbnail" to="#">
-            <img src="images/hopscotch.jpg" class="img-fluid" alt="Responsive image"/>
+            <img class="Image img-fluid" alt="Responsive image" src={Image}/>
           </Link>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-          <h3>Some Links</h3>
-          <p>Lorem ipsum dolor sit ame.</p>
-          <ul class="nav nav-pills nav-stacked">
-            <Link class="active" to="#">Link 1</Link>
-            <Link to="#">Link 2</Link>
-            <Link to="#">Link 3</Link>
-          </ul>
-          <hr class="hidden-sm hidden-md hidden-lg"/>
+          <p>The crew gather for an amicable snap</p>
         </div>
-        <div class="col-sm-8">
+        <div class="top-padding col-sm-8">
           <h2>League Ranking</h2>
-          <h5>Title description, Dec 7, 2017</h5>
-          <div class="fakeimg">Fake Image</div>
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <h5>Underdog's Award, Dec 7, 2018</h5>
+          <p>After a heated season with many consecutive losses the Bristol skippers managed to pull themselves a single win out of the bag. Against all odds they delivered a powerful defeat in a friendly with the Bath springers.</p>
           <br/>
           <h2>Statistics</h2>
-          <h5>winwinwinwinwinwnin, Sep 2, 2017</h5>
-          <div class="fakeimg">Fake Image</div>
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <h5>Wins:1 Losses:48 Draws:12</h5>
+          <p>The team has a record of poor defence matched only by their appaling offensive play. They currently hold a record 78 falls and 32 foul hops which is leagues behind the competition.</p>
         </div>
       </div>
     </div>

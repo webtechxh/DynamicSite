@@ -1,8 +1,12 @@
 import React from 'react';
+import Image from './bracket.png'; // Import using relative path
 
 function Home() {
   return (
       <section>
+      {/*
+      <img class="Image float-right" src={Image}/>
+      */}
         <div class="container">
           <div class="row">
             <div class="col-lg-6">

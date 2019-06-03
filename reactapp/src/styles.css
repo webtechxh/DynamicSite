@@ -1,8 +1,14 @@
  @import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
 
  body {
-   font-family: 'Ranga', sans-serif
+   font-family: 'Ranga', sans-serif;
+   background: url('background.jpg') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+   -o-background-size: cover;
  }
+
 
 .heading {
   width: 100%;
