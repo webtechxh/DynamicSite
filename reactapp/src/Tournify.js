@@ -104,6 +104,7 @@ class App extends React.Component {
               [keys[i]]: serverState[keys[i]]
             });
           }
+          this.setState({statusText: ""});
           console.log(this.state);
         },
         (error) => {
