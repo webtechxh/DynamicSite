@@ -62,6 +62,7 @@ function Input(props) {
         />
         <button onClick={props.onClick}>Input!</button>
         <button onClick={props.onUpload}>Upload This Tournament!</button>
+        <button onClick={props.onGet}>Test Get</button>
         {props.statusText}
       </div>
     </div>
@@ -78,9 +79,39 @@ class App extends React.Component {
         onClick={e => this.handleClickOfInput(e)}
         onEnter={e => this.handleEnter(e)}
         onUpload={e => this.handleUpload(e)}
+        onGet={e => this.handleGet(e)}
         statusText = {this.state.statusText}
         newName={this.state.newName}
       />
+    );
+  }
+
+  handleGet(event){
+    event.preventDefault();
+    var keys = Object.keys(this.state);
+    console.log(keys);
+    fetch("https://localhost:8443/tournament/3", {
+      method: 'get',
+      headers: {'Content-Type':'application/json'},
+    }).then(res => res.json())
+      .then(
+        (result) => {
+          var serverState = JSON.parse(result.state);
+          console.log(serverState);
+          for (var i=0; i<keys.length; i++){
+            console.log(keys[i]);
+            this.setState({
+              [keys[i]]: serverState[keys[i]]
+            });
+          }
+          console.log(this.state);
+        },
+        (error) => {
+          this.setState({
+            isLoading: false,
+            regSuccess: false
+          });
+        }
     );
   }
 

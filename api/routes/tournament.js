@@ -12,8 +12,8 @@ router.post('/', passport.authenticate('jwt', {session:false}), async function(r
   res.json({ success: true, message: req.body.state, tournamentId: createdId.id});
 });
 
-router.get('/:id', function(req, res, next) {
-  var tState = getTournamentStateById(req.params.id);
+router.get('/:id', async function(req, res, next) {
+  var tState = await database.getTournamentStateById(req.params.id);
   res.json({success: true, state:tState, tournamentId: req.params.id});
 });
 
