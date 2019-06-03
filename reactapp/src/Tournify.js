@@ -62,7 +62,6 @@ function Input(props) {
         />
         <button onClick={props.onClick}>Input!</button>
         <button onClick={props.onUpload}>Upload This Tournament!</button>
-        <button onClick={props.onGet}>Test Get</button>
         {props.statusText}
       </div>
     </div>
@@ -79,14 +78,13 @@ class App extends React.Component {
         onClick={e => this.handleClickOfInput(e)}
         onEnter={e => this.handleEnter(e)}
         onUpload={e => this.handleUpload(e)}
-        onGet={e => this.handleGet(e)}
         statusText = {this.state.statusText}
         newName={this.state.newName}
       />
     );
   }
 
-  handleGet(event){
+  /*handleGet(event){
     event.preventDefault();
     var keys = Object.keys(this.state);
     console.log(keys);
@@ -114,12 +112,16 @@ class App extends React.Component {
           });
         }
     );
-  }
+  }*/
 
   //Upload the tournament to the server
 
   handleUpload(event) {
     event.preventDefault();
+    if (this.state.tournamentId != -1){
+      this.setState({statusText: "Tournament already uploaded! It is being updated automatically :)"});
+      return;
+    }
     fetch("https://localhost:8443/tournament", {
       method: 'post',
       headers: {
@@ -144,8 +146,13 @@ class App extends React.Component {
             regSuccess: result.success,
           });
           if(result.success){
-            this.setState({statusText: "The tournament was successfully created at " +
-                                        "http://localhost:3000/tournament/" + result.tournamentId})
+            this.setState({
+              statusText: "The tournament was successfully created with an id of " + result.tournamentId,
+              tournamentId: result.tournamentId
+            });
+          }
+          else{
+            this.setState({statusText: result.message});
           }
         },
         (error) => {
@@ -155,6 +162,53 @@ class App extends React.Component {
           });
         }
     );
+  }
+
+  //Automagically update tournament
+
+  handleUpdate() {
+    if (this.state.tournamentId === -1){return;}
+    fetch("https://localhost:8443/tournament/" + this.state.tournamentId, {
+      method: 'put',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': localStorage.getItem("authToken")
+      },
+      body: JSON.stringify({
+        state: this.state
+      })
+    }).then(res => {
+        if (res.status === 401){
+          this.props.history.push('/login');
+          return;
+        }
+        return res.json();
+      })
+      .then(
+        (result) => {
+          if (!result){ return; }
+          this.setState({
+            isLoading: false,
+            regSuccess: result.success,
+          });
+          if(result.success){
+            this.setState({
+              statusText: "The tournament was successfully created with an id of " + result.tournamentId,
+              tournamentId: result.tournamentId
+            });
+          }
+          else{
+            this.setState({statusText: result.message});
+          }
+        },
+        (error) => {
+          this.setState({
+            isLoading: false,
+            regSuccess: false,
+            statusText: "Fatal Error: cause unknown"
+          });
+        }
+      );
   }
 
   //this does the work of rendering the buttons in Main
@@ -200,6 +254,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      tournamentId: -1,
       isLoading: false,
       statusText: "",
       numOfSeeds: 0,
@@ -515,6 +570,7 @@ class App extends React.Component {
     this.setState({
       names: newArr
     });
+    this.handleUpdate();
   }
 
   handleClickOfInput(e) {

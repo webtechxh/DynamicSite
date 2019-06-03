@@ -7,7 +7,8 @@ module.exports.createTournamentSchema = createTournamentSchema;
 module.exports.createUser = createUser;
 module.exports.getUserByEmail = getUserByEmail;
 module.exports.createTournament = createTournament;
-module.exports.getTournamentStateById = getTournamentStateById;
+module.exports.updateTournament = updateTournament;
+module.exports.getTournamentById = getTournamentById;
 
 async function createTeamSchema(){
   try {
@@ -77,11 +78,18 @@ async function getUserByEmail(email){
       } catch (e) { throw e; }
 }
 
-async function getTournamentStateById(id){
+async function updateTournament(id, state){
+  try {
+        var db = await sqlite.open("./db.sqlite");
+        await db.run("update Tournament set state = ? where id = ?", [state, id]);
+      } catch (e) { throw e; }
+}
+
+async function getTournamentById(id){
   try{
     var db = await sqlite.open("./db.sqlite");
-    var as = await db.get("select state from Tournament where id = ?", [id]);
+    var as = await db.get("select * from Tournament where id = ?", [id]);
     console.log(as);
-    return as.state;
+    return as;
   } catch (e) { throw e; }
 }

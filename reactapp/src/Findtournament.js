@@ -81,6 +81,10 @@ class App extends React.Component {
     }).then(res => res.json())
       .then(
         (result) => {
+          if (!result.success){
+            this.setState({statusText: "  " + result.message + " Try again!"});
+            return;
+          }
           var serverState = JSON.parse(result.state);
           console.log(serverState);
           for (var i=0; i<keys.length; i++){
@@ -274,76 +278,38 @@ class App extends React.Component {
   //functionality to enter key
 
   //does the same thing as input button
-  handleEnter(e) {
-    if (e.key === "Enter") {
-      const newNames = this.state.names;
-      const numNames = this.state.numNames;
-      const arrLength = this.state.names.length;
-      if (numNames >= this.state.numOfSeeds){
-        return null;
-      }
-      this.setState({numNames: this.state.numNames + 1});
-      let index = Math.floor(Math.random() * arrLength - 1);
-      if (arrLength === 6) {
-        //checks length of array
-        while (
-          //as long as they are the outside seeds then randomly put the name in it
-          newNames[index] !== undefined ||
-          index === arrLength - 1 ||
-          index === arrLength - 2 ||
-          !newNames.indexOf(this.state.newName) < 0 ||
-          index < 0
-        ) {
-          index = Math.floor(Math.random() * arrLength - 1);
-        }
-      } else if (arrLength === 14) {
-        while (
-          newNames[index] !== undefined ||
-          index === arrLength - 1 ||
-          index === arrLength - 2 ||
-          index === arrLength - 3 ||
-          index === arrLength - 4 ||
-          index === arrLength - 5 ||
-          index === arrLength - 6 ||
-          !newNames.indexOf(this.state.newName) < 0 ||
-          index < 0
-        ) {
-          index = Math.floor(Math.random() * arrLength - 1);
-        }
-      } else if (arrLength === 30) {
-        while (
-          newNames[index] !== undefined ||
-          index === arrLength - 1 ||
-          index === arrLength - 2 ||
-          index === arrLength - 3 ||
-          index === arrLength - 4 ||
-          index === arrLength - 5 ||
-          index === arrLength - 6 ||
-          index === arrLength - 7 ||
-          index === arrLength - 8 ||
-          index === arrLength - 9 ||
-          index === arrLength - 10 ||
-          index === arrLength - 11 ||
-          index === arrLength - 12 ||
-          index === arrLength - 13 ||
-          index === arrLength - 14 ||
-          !newNames.indexOf(this.state.newName) < 0 ||
-          index < 0
-        ) {
-          index = Math.floor(Math.random() * arrLength - 1);
-        }
-      } else {
-        index = undefined;
-      }
-      if (index !== undefined) {
-        newNames.splice(index, 1, this.state.newName); //update state of names array
-        this.setState({
-          names: newNames
-        });
-      }
-      this.setState({
-        newName: ""
-      });
+  handleEnter(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      var keys = Object.keys(this.state);
+      fetch("https://localhost:8443/tournament/" + this.state.newName, {
+        method: 'get',
+        headers: {'Content-Type':'application/json'},
+      }).then(res => res.json())
+        .then(
+          (result) => {
+            if (!result.success){
+              this.setState({statusText: "  " + result.message + " Try again!"});
+              return;
+            }
+            var serverState = JSON.parse(result.state);
+            console.log(serverState);
+            for (var i=0; i<keys.length; i++){
+              console.log(keys[i]);
+              this.setState({
+                [keys[i]]: serverState[keys[i]]
+              });
+            }
+            this.setState({statusText: ""});
+            console.log(this.state);
+          },
+          (error) => {
+            this.setState({
+              isLoading: false,
+              regSuccess: false
+            });
+          }
+      );
     }
   }
   //when the input is being changed, update the string of new name
