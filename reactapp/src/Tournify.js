@@ -25,7 +25,7 @@ const Main = styled.div`
   grid-template-rows: ${props => props.mainIndexOfRow};
   background-color: #FF4C4C;
   display: grid;
-  height: 59vh;
+  height: 53vh;
   text-align: center;
 `;
 
