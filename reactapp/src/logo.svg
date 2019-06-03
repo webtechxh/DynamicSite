@@ -1,3 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640" height="640"><defs><path d="M104.11 20.79L231.83 20.79L231.83 129.7L104.11 129.7L104.11 20.79Z" id="a3sKZAVlH"></path><path d="M360.64 20.79L488.37 20.79L488.37 129.7L360.64 129.7L360.64 20.79Z" id="e4PHBWU2He"></path><path d="M424.5 140.59L424.5 184.16L167.97 184.16L167.97 140.59" id="k4FAYugWkO"></path><path d="M232.38 509.9L360.1 509.9L360.1 618.81L232.38 618.81L232.38 509.9Z" id="f14eRPRIAr"></path><path d="M296.24 496.04L296.24 184.16" id="f6watRa4zN"></path></defs><g><g><g><use xlink:href="#a3sKZAVlH" opacity="1" fill="#c51414" fill-opacity="1"></use></g><g><use xlink:href="#e4PHBWU2He" opacity="1" fill="#c51414" fill-opacity="1"></use></g><g><g><use xlink:href="#k4FAYugWkO" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="9" stroke-opacity="1"></use></g></g><g><use xlink:href="#f14eRPRIAr" opacity="1" fill="#c51414" fill-opacity="0"></use><g><use xlink:href="#f14eRPRIAr" opacity="1" fill-opacity="0" stroke="#c51414" stroke-width="9" stroke-opacity="1"></use></g></g><g><g><use xlink:href="#f6watRa4zN" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="9" stroke-opacity="1"></use></g></g></g></g></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640" height="640">
+<defs>
+<path d="M104.11 20.79L231.83 20.79L231.83 129.7L104.11 129.7L104.11 20.79Z" id="a3sKZAVlH"></path>
+<path d="M360.64 20.79L488.37 20.79L488.37 129.7L360.64 129.7L360.64 20.79Z" id="e4PHBWU2He"></path>
+<path d="M424.5 140.59L424.5 184.16L167.97 184.16L167.97 140.59" id="k4FAYugWkO"></path>
+<path d="M232.38 509.9L360.1 509.9L360.1 618.81L232.38 618.81L232.38 509.9Z" id="f14eRPRIAr"></path>
+<path d="M296.24 496.04L296.24 184.16" id="f6watRa4zN"></path></defs>
+<g>
+	<g>
+		<g>
+			<use xlink:href="#a3sKZAVlH" opacity="1" fill="#c51414" fill-opacity="1"></use>
+		</g>
+		<g>
+			<use xlink:href="#e4PHBWU2He" opacity="1" fill="#c51414" fill-opacity="1"></use>
+		</g>
+		<g>
+			<g>
+				<use xlink:href="#k4FAYugWkO" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="9" stroke-opacity="1"></use>
+			</g>
+		</g>
+		<g>
+			<use xlink:href="#f14eRPRIAr" opacity="1" fill="#c51414" fill-opacity="0"></use>
+		<g>
+			<use xlink:href="#f14eRPRIAr" opacity="1" fill-opacity="0" stroke="#c51414" stroke-width="9" stroke-opacity="1"></use>
+		</g>
+		</g>
+		<g>
+			<g>
+				<use xlink:href="#f6watRa4zN" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="9" stroke-opacity="1"></use>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

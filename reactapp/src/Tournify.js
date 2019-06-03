@@ -129,9 +129,16 @@ class App extends React.Component {
       body: JSON.stringify({
         state: this.state
       })
-    }).then(res => res.json())
+    }).then(res => {
+        if (res.status === 401){
+          this.props.history.push('/login');
+          return;
+        }
+        return res.json();
+      })
       .then(
         (result) => {
+          if (!result){ return; }
           this.setState({
             isLoading: false,
             regSuccess: result.success,
