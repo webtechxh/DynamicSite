@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 
 let Competitor = styled.button`
   color: #f7e6f0;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   grid-column-start: ${props => props.indexOfColumn};
   grid-row-start: ${props => props.indexOfRow};
@@ -25,7 +25,7 @@ const Main = styled.div`
   grid-template-rows: ${props => props.mainIndexOfRow};
   background-color: #FF4C4C;
   display: grid;
-  height: 100vh;
+  height: 59vh;
   text-align: center;
 `;
 
