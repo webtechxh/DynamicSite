@@ -3,14 +3,16 @@ import { Link } from "react-router-dom"
 import logo from './logo.svg'; // Tell Webpack this JS file uses this image
 
 
+var loginButton;
+if (localStorage.getItem('authorized')) {
+  loginButton = "Logout";
+} else {
+  loginButton = "Login";
+}
 
 function Header() {
   return (
-
     <nav class="navbar navbar-expand-lg navbar-dark">
-
-
-
 
     <div class="navbar-left"><Link class="nav-link" to="/"><img class="logo" src={logo}/></Link></div>
       <div class="container">
@@ -24,13 +26,14 @@ function Header() {
               <b>Tournify Now</b>
             </Link>
               <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                <Link class="dropdown-item" to="/login">Login</Link>
+                <Link class="dropdown-item" to="/login">{loginButton}</Link>
                 <div class="dropdown-divider"></div>
                 <Link class="dropdown-item" to="/profile">Your Team</Link>
                 <div class="dropdown-divider"></div>
                 <Link class="dropdown-item" to="/registertournament">Register Tournament</Link>
                 <Link class="dropdown-item" to="/registerteam">Register Team</Link>
                 <div class="dropdown-divider"></div>
+
 
                 {/*
                   <Link class="dropdown-item" to="/tournamentresults">Tournament Results</Link>
