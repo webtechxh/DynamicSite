@@ -7,9 +7,9 @@ function Registerteam() {
           <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
           	<div class="panel panel-default">
           		<div class="panel-heading">
-  			    		<h3 class="panel-title">Register your team</h3>
+  			    		<h3 class="top-padding panel-title" style={{fontFamily: 'Ranga', fontSize:40}}>Register your team</h3>
   			 			</div>
-  			 			<div class="panel-body">
+  			 			<div class="top-padding panel-body">
   			    		<form role="form">
   			    			<div class="row">
   			    				<div class="col-xs-6 col-sm-6 col-md-6">

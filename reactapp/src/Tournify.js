@@ -33,7 +33,7 @@ const Main = styled.div`
 function Input(props) {
   return (
     <div className="intro-components">
-      <h1>Tournament Bracket</h1>
+      <h1 class="top-padding" style={{fontFamily: 'Ranga', fontSize:40}}>Tournament Bracket</h1>
       <div className="size-label">
         <h5>Choose your Size!</h5>
       </div>
@@ -493,7 +493,7 @@ class App extends React.Component {
     return (
       <div className="bracketMaker">
         <div className="heading">{this.renderInput()}</div>
-        <div className="body">{this.listBrackets()}</div>
+        <div className="bottom-padding body">{this.listBrackets()}</div>
       </div>
     );
   }

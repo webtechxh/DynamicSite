@@ -1,13 +1,27 @@
+ @import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
+
+ body {
+   font-family: 'Ranga', sans-serif
+ }
+
 .heading {
   width: 100%;
-  background-color: #ff6666;
+  background-color: #FF4C4C;
   color: 9b88b4;
+  font-weight: 700;
 }
 
 .navbar{
   background: #FF4C4C;
 }
 
+.top-padding{
+   margin-top: 40px;
+}
+
+.bottom-padding{
+   margin-bottom: 50px;
+}
 
 .logo {
     display: block;

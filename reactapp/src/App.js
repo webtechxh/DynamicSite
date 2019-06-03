@@ -9,7 +9,6 @@ import Home from "./Home"
 import About from "./About"
 import Footer from "./Footer"
 import Contact from "./Contact"
-import Services from "./Services"
 import Login from "./Login"
 import Register from "./Register"
 import Registerteam from "./Registerteam"
@@ -26,7 +25,6 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
         <Route path="/contact/" component={Contact} />
-        <Route path="/services/" component={Services} />
         <Route path="/login/" component={Login} />
         <Route path="/register/" component={Register} />
         <Route path="/registerteam/" component={Registerteam} />

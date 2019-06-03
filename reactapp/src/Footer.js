@@ -16,9 +16,6 @@ function Footer() {
               <Link class="nav-link " to="/about"><b>About</b></Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" to="/services"><b>Services</b></Link>
-            </li>
-            <li class="nav-item">
               <Link class="nav-link" to="/contact"><b>Contact</b></Link>
             </li>
           </ul>

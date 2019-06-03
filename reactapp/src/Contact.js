@@ -7,9 +7,9 @@ function Contact() {
   <div class="row content">
     <div class="col-sm-2 sidenav">
     </div>
-    <div class="col-sm-8 text-left">
-      <h1>Ask how we can help you:</h1>
-      <div class="font-weight-bold">
+    <div class="top-padding col-sm-8 text-left">
+      <h1 style={{fontFamily: 'Ranga', fontSize:40}}>Get in touch...</h1>
+      <div class="top-padding font-weight-bold">
       See our platform in action
       </div>
       <p>Request a personalized demo or get help registering.</p>

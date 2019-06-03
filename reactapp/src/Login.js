@@ -67,7 +67,7 @@ class Login extends React.Component {
       <div class="container">
         <div class="row justify-content-center my-5">
           <form class="form-signin mg-btm" onSubmit={this.handleSubmit}>
-            <h3 class="heading-desc">	Login to Tournify</h3>
+            <h3 class="top-padding heading-desc" style={{fontFamily: 'Ranga', fontSize:40}}>	Login to Tournify</h3>
               <div class="social-box my-3">
                 <div class="row mg-btm my-3">
                    <div class="col-md-12">
