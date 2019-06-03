@@ -10,6 +10,7 @@ import About from "./About"
 import Footer from "./Footer"
 import Contact from "./Contact"
 import Login from "./Login"
+import Logout from "./Logout"
 import Register from "./Register"
 import Registerteam from "./Registerteam"
 import Registertournament from "./Registertournament"
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about/" component={About} />
         <Route path="/contact/" component={Contact} />
         <Route path="/login/" component={Login} />
+        <Route path="/logout/" component={Logout} />
         <Route path="/register/" component={Register} />
         <Route path="/registerteam/" component={Registerteam} />
         <Route path="/registertournament/" component={Registertournament} />

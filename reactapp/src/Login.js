@@ -51,6 +51,7 @@ class Login extends React.Component {
             localStorage.setItem('authToken', result.token);
             localStorage.setItem('authorized', true);
             this.props.history.push("/");
+            window.location.reload();
           }
         },
         (error) => {
