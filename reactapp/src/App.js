@@ -16,7 +16,7 @@ import Registerteam from "./Registerteam"
 import Registertournament from "./Registertournament"
 import Profile from "./Profile"
 import Tournify from "./Tournify"
-
+import Findtournament from "./Findtournament"
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
         <Route path="/register/" component={Register} />
         <Route path="/registerteam/" component={Registerteam} />
         <Route path="/registertournament/" component={Registertournament} />
+        <Route path="/findtournament/" component={Findtournament} />
         <Route path="/profile/" component={Profile} />
         <Route path="/tournify/" component={Tournify} />
         <Footer />

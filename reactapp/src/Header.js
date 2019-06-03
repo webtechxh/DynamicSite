@@ -43,20 +43,24 @@ class Header extends React.Component {
               </Link>
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                   <Link class="dropdown-item" to={this.state.loginButtonLink}>{this.state.loginButton}</Link>
+                  <Link class="dropdown-item" to="/register">Register</Link>
                   <div class="dropdown-divider"></div>
                   <Link class="dropdown-item" to="/profile">Your Team</Link>
+
+                  {/*
                   <div class="dropdown-divider"></div>
                   <Link class="dropdown-item" to="/registertournament">Register Tournament</Link>
                   <Link class="dropdown-item" to="/registerteam">Register Team</Link>
-                  <div class="dropdown-divider"></div>
 
 
-                  {/*
+
                     <Link class="dropdown-item" to="/tournamentresults">Tournament Results</Link>
                     <div class="dropdown-divider"></div>
                   */}
 
+                  <div class="dropdown-divider"></div>
                   <Link class="dropdown-item" to="/tournify">Tournify</Link>
+                  <Link class="dropdown-item" to="/findtournament">Find Tournament</Link>
                 </div>
               </li>
             </ul>
