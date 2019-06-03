@@ -13,7 +13,7 @@ router.post('/', passport.authenticate('jwt', {session:false}), async function(r
 });
 
 router.get('/:id', function(req, res, next) {
-  tState = getTournamentStateById(req.params.id);
+  var tState = getTournamentStateById(req.params.id);
   res.json({success: true, state:tState, tournamentId: req.params.id});
 });
 
