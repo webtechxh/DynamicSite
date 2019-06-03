@@ -16,6 +16,12 @@ let Competitor = styled.button`
   background-color: ${props => props.isClicked};
   margin: 5px;
   border: 2px solid #151221;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+
+  :hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 `;
 
 //i made main a styled component. It also uses grid props for
@@ -121,6 +127,7 @@ class App extends React.Component {
       seedNum: [],
       newName: "",
       names: [],
+      numNames: 0,
       isClicked: [],
       class: "container",
       bracket4: {
@@ -246,7 +253,12 @@ class App extends React.Component {
   handleEnter(e) {
     if (e.key === "Enter") {
       const newNames = this.state.names;
+      const numNames = this.state.numNames;
       const arrLength = this.state.names.length;
+      if (numNames >= this.state.numOfSeeds){
+        return null;
+      }
+      this.setState({numNames: this.state.numNames + 1});
       let index = Math.floor(Math.random() * arrLength - 1);
       if (arrLength === 6) {
         //checks length of array
@@ -336,6 +348,7 @@ class App extends React.Component {
       //depending on the seed, fills the arrays with the correct amount of buttons.
       this.setState({
         names: Array(6).fill(),
+        numNames: 0,
         class: "bracket4",
         isClicked: Array(6).fill("#9B88B4")
       });
@@ -343,12 +356,14 @@ class App extends React.Component {
     if (newNum === "8") {
       this.setState({
         names: Array(14).fill(),
+        numNames: 0,
         isClicked: Array(14).fill("#9B88B4")
       });
     }
     if (newNum === "16") {
       this.setState({
         names: Array(30).fill(),
+        numNames: 0,
         isClicked: Array(30).fill("#9B88B4")
       });
     }
@@ -363,58 +378,58 @@ class App extends React.Component {
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#00c600" &&
         numBracket === "4"
       ) {
         newArr[this.state.bracket4.match[key]] = arr[key]; //this algorithm decides where the name should go once clicked.
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key + 1] = "red"; //uses key plus or minus one and also depends on the bracket size
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#00c600" &&
         numBracket === "4"
       ) {
         newArr[this.state.bracket4.match[key]] = arr[key];
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key - 1] = "red";
       }
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#00c600" &&
         numBracket === "8"
       ) {
         newArr[this.state.bracket8.match[key]] = arr[key];
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key + 1] = "red";
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#00c600" &&
         numBracket === "8"
       ) {
         newArr[this.state.bracket8.match[key]] = arr[key];
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key - 1] = "red";
       }
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#00c600" &&
         numBracket === "16"
       ) {
         newArr[this.state.bracket16.match[key]] = arr[key];
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key + 1] = "red";
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#00c600" &&
         numBracket === "16"
       ) {
         newArr[this.state.bracket16.match[key]] = arr[key];
-        clickedArr[key] = "green";
+        clickedArr[key] = "#00c600";
         clickedArr[key - 1] = "red";
       }
     }
@@ -425,7 +440,12 @@ class App extends React.Component {
 
   handleClickOfInput(e) {
     const newNames = this.state.names;
+    const numNames = this.state.numNames;
     const arrLength = this.state.names.length;
+    if (numNames >= this.state.numOfSeeds){
+      return null;
+    }
+    this.setState({numNames: this.state.numNames + 1});
     let index = Math.floor(Math.random() * arrLength - 1);
     if (arrLength === 6) {
       //checks length of array
