@@ -61,6 +61,8 @@ function Input(props) {
           onKeyPress={props.onEnter}
         />
         <button onClick={props.onClick}>Input!</button>
+        <button onClick={props.onUpload}>Upload This Tournament!</button>
+        {props.statusText}
       </div>
     </div>
   );
@@ -75,8 +77,44 @@ class App extends React.Component {
         onChange={e => this.handleChange(e)}
         onClick={e => this.handleClickOfInput(e)}
         onEnter={e => this.handleEnter(e)}
+        onUpload={e => this.handleUpload(e)}
+        statusText = {this.state.statusText}
         newName={this.state.newName}
       />
+    );
+  }
+
+  //Upload the tournament to the server
+
+  handleUpload(event) {
+    event.preventDefault();
+    fetch("https://localhost:8443/tournament", {
+      method: 'post',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': localStorage.getItem("authToken")
+      },
+      body: JSON.stringify({
+        state: this.state
+      })
+    }).then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoading: false,
+            regSuccess: result.success,
+          });
+          if(result.success){
+            this.setState({statusText: "The tournament was successfully created at " +
+                                        "http://localhost:3000/tournament/" + result.tournamentId})
+          }
+        },
+        (error) => {
+          this.setState({
+            isLoading: false,
+            regSuccess: false
+          });
+        }
     );
   }
 
@@ -123,6 +161,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
+      statusText: "",
       numOfSeeds: 0,
       seedNum: [],
       newName: "",

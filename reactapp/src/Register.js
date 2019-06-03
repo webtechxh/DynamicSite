@@ -49,7 +49,7 @@ class Register extends React.Component {
             regSuccess: result.success
           });
           console.log(result);
-          if (this.regSuccess) {
+          if (this.state.regSuccess) {
             this.props.history.push("/login");
           }
         },

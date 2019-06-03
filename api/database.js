@@ -6,6 +6,7 @@ module.exports.createUserSchema = createUserSchema;
 module.exports.createTournamentSchema = createTournamentSchema;
 module.exports.createUser = createUser;
 module.exports.getUserByEmail = getUserByEmail;
+module.exports.createTournament = createTournament;
 
 async function createTeamSchema(){
   try {
@@ -59,9 +60,10 @@ async function createTournament(userEmail, state, title){
   try {
         var db = await sqlite.open("./db.sqlite");
         await db.run("INSERT INTO Tournament(userEmail, state, title) Values(?, ?, ?)", [userEmail, state, title]);
-        //var ps = db.prepare("INSERT INTO User Values(?, ?, ?)");
-        //await ps.run(username, password, email);
-        //await ps.finalize();
+        var as = await db.get("select id from Tournament ORDER BY id DESC LIMIT 1");
+        console.log(as);
+        console.log("testing testing");
+        return as;
       } catch (e) { throw e; }
 }
 
