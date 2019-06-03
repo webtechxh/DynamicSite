@@ -4,6 +4,19 @@
   color: 9b88b4;
 }
 
+.navbar{
+  background: #FF4C4C;
+}
+
+
+.logo {
+    display: block;
+    height: auto;
+    width: 70px;
+    padding-top: 1px;
+    margin-right: 1px;
+}
+
 html,
 body {
   margin: 0;
