@@ -39,7 +39,7 @@ const Main = styled.div`
 function Input(props) {
   return (
     <div className="intro-components">
-      <h1 class="top-padding" style={{fontFamily: 'Ranga', fontSize:40}}>Tournament Bracket</h1>
+      <h1 className="top-padding" style={{fontFamily: 'Ranga', fontSize:40}}>Tournament Bracket</h1>
       <div className="size-label">
         <h5>Choose your Size!</h5>
       </div>
